@@ -22,7 +22,7 @@ The project had been developed as a coding task in company, but later it was sli
 ### Workflow
 
 You will need a special QR-code to register. This, for instance:
-<img src="img/QR.jpg" alt="alt text" width="300" height="300">
+<img src="img/qr.jpg" alt="alt text" width="300" height="300">
 
 You can log in either using your fingerprint or with password: admin, P@assw0rd (zero in the end). It will log out when you exit.
 
