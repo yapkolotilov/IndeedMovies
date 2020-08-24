@@ -1,5 +1,6 @@
 package me.kolotilov.indeedmovies.ui.movies.savedMovies
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_recycler.*
 import me.kolotilov.indeedmovies.R
 import me.kolotilov.indeedmovies.ui.base.BaseFragment
-import me.kolotilov.indeedmovies.ui.common.castTo
+import me.kolotilov.indeedmovies.ui.common.PlaceholderAdapter
 import me.kolotilov.indeedmovies.ui.common.logError
 import me.kolotilov.indeedmovies.ui.movies.MoviesFragmentDirections
 import me.kolotilov.indeedmovies.ui.movies.movieList.MovieListAdapter
@@ -32,7 +33,7 @@ class SavedMoviesFragment : BaseFragment<SavedMoviesViewModel, SavedMoviesViewMo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler.adapter = MovieListAdapter(MovieClickDelegateImpl())
+        submitItems(emptyList())
     }
 
     override fun onResume() {
@@ -42,10 +43,29 @@ class SavedMoviesFragment : BaseFragment<SavedMoviesViewModel, SavedMoviesViewMo
 
     //endregion
 
+    @Suppress("DEPRECATION")
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun submitItems(movies: List<MovieSearchItem>) {
+        if (movies.isEmpty()) {
+            recycler.adapter = PlaceholderAdapter(resources.getDrawable(R.drawable.ic_save), getString(R.string.save_movies_locally))
+
+            return
+        }
+
+        val adapter = recycler.adapter
+        if (adapter is MovieListAdapter)
+            adapter.submitList(movies)
+        else {
+            recycler.adapter = MovieListAdapter(MovieClickDelegateImpl()).apply {
+                submitList(movies)
+            }
+        }
+    }
+
     private fun loadData() {
         viewModel.getAllMovies()
             .subscribe({
-                recycler.adapter!!.castTo<MovieListAdapter>().submitList(it.map { it.toMovieSearchItem() })
+                submitItems(it.map { it.toMovieSearchItem() })
             }, ::logError)
             .disposeOnStop()
     }

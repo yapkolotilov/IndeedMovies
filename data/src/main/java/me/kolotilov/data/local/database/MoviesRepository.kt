@@ -16,6 +16,8 @@ interface MoviesRepository {
     fun getAllMovies(): Single<List<MovieDetails>>
 
     fun getById(movieId: String): Maybe<MovieDetails>
+
+    fun removeAll(): Completable
 }
 
 internal class MoviesRepositoryImpl(context: Context) : MoviesRepository {
@@ -41,6 +43,11 @@ internal class MoviesRepositoryImpl(context: Context) : MoviesRepository {
     override fun getById(movieId: String): Maybe<MovieDetails> {
         return appDatabase.movieDao.getById(movieId)
             .map { it.toMovieDetails() }
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun removeAll(): Completable {
+        return appDatabase.movieDao.removeAll()
             .subscribeOn(Schedulers.io())
     }
 }

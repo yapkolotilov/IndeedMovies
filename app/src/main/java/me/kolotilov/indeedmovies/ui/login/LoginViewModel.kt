@@ -34,6 +34,9 @@ class LoginViewModel(
     fun register(qrContent: String): Completable {
         return Completable.fromRunnable {
             val decoded = qrDecoder.decode(qrContent)
+            val registeredUser = localRepository.authorization.getAuthorizationData()
+            if (registeredUser != null)
+                localRepository.movies.removeAll().blockingAwait()
             localRepository.authorization.saveAuthorizationData(decoded.toAuthorizationData())
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

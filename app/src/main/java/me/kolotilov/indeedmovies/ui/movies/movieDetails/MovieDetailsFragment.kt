@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.drawToBitmap
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -48,7 +49,7 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel, MovieDetailsVie
     //endregion
 
     private fun onSaveClick() {
-        viewModel.saveMovie(currentMovie)
+        viewModel.saveMovie(currentMovie, iv_poster.drawToBitmap())
             .subscribe({
                 btn_save.visibility = View.GONE
                 btn_remove.visibility = View.VISIBLE

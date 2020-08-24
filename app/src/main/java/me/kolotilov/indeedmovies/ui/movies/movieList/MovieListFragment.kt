@@ -1,5 +1,6 @@
 package me.kolotilov.indeedmovies.ui.movies.movieList
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 import me.kolotilov.indeedmovies.R
 import me.kolotilov.indeedmovies.ui.base.BaseFragment
-import me.kolotilov.indeedmovies.ui.common.castTo
+import me.kolotilov.indeedmovies.ui.common.PlaceholderAdapter
 import me.kolotilov.indeedmovies.ui.common.logError
 import me.kolotilov.indeedmovies.ui.movies.MoviesFragmentDirections
 import me.kolotilov.logic.MovieSearchItem
@@ -30,11 +31,12 @@ class MovieListFragment : BaseFragment<MovieListViewModel, MovieListViewModel.Fa
         return inflater.inflate(R.layout.fragment_movie_list, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler.adapter = MovieListAdapter(MovieListItemDelegateImpl())
         et_search.addTextChangedListener(OnQueryTextListener())
         subscribeToSearchResults()
+        submitItems(emptyList())
     }
 
     //endregion
@@ -43,11 +45,29 @@ class MovieListFragment : BaseFragment<MovieListViewModel, MovieListViewModel.Fa
     private fun subscribeToSearchResults() {
         viewModel.searchResults()
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                recycler.adapter!!.castTo<MovieListAdapter>().submitList(it)
-            }, ::logError)
+            .subscribe(::submitItems, ::logError)
             .disposeOnStop()
     }
+
+    @Suppress("DEPRECATION")
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun submitItems(movies: List<MovieSearchItem>) {
+        if (movies.isEmpty()) {
+            recycler.adapter = PlaceholderAdapter(resources.getDrawable(R.drawable.ic_search), getString(
+                R.string.type_to_search))
+            return
+        }
+
+        val adapter = recycler.adapter
+        if (adapter is MovieListAdapter)
+            adapter.submitList(movies)
+        else {
+            recycler.adapter = MovieListAdapter(MovieListItemDelegateImpl()).apply {
+                submitList(movies)
+            }
+        }
+    }
+
 
     private inner class OnQueryTextListener : TextWatcher {
 
