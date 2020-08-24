@@ -1,5 +1,6 @@
 package me.kolotilov.indeedmovies.ui.movies.movieDetails
 
+import android.graphics.Bitmap
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
@@ -23,13 +24,33 @@ class MovieDetailsViewModel(
         return localRepository.movies.getById(id)
     }
 
-    fun saveMovie(movieDetails: MovieDetails): Completable {
-        return localRepository.movies.saveMovie(movieDetails)
+    fun saveMovie(movieDetails: MovieDetails, bitmap: Bitmap): Completable {
+        val uri = localRepository.images.getFilePath(movieDetails.id)
+        val details = MovieDetails(
+            id = movieDetails.id,
+            title = movieDetails.title,
+            posterUrl = uri.toString(),
+            type = movieDetails.type,
+            runtime = movieDetails.runtime,
+            genre = movieDetails.genre,
+            actors = movieDetails.actors,
+            year = movieDetails.year,
+            imdbRating = movieDetails.imdbRating,
+            country = movieDetails.country,
+            metascore = movieDetails.metascore,
+            imdbVotes = movieDetails.imdbVotes,
+            director = movieDetails.director,
+            production = movieDetails.production,
+            plot = movieDetails.plot
+        )
+        return localRepository.movies.saveMovie(details)
+            .mergeWith(localRepository.images.saveImage(bitmap, movieDetails.id))
             .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun removeMovie(movieId: String): Completable {
         return localRepository.movies.removeMovie(movieId)
+            .mergeWith(localRepository.images.deleteImage(movieId))
             .observeOn(AndroidSchedulers.mainThread())
     }
 

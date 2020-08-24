@@ -23,4 +23,6 @@
     <string name="search">Search</string>
     <string name="save">Save</string>
     <string name="remove">Remove</string>
+    <string name="type_to_search">Type to search</string>
+    <string name="save_movies_locally">Save movies locally</string>
 </resources>

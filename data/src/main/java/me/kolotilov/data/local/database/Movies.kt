@@ -55,4 +55,7 @@ internal interface MovieDao {
 
     @Query("SELECT * FROM Movies WHERE Id = :movieId")
     fun getById(movieId: String): Maybe<MovieEntity>
+
+    @Query("DELETE FROM Movies")
+    fun removeAll(): Completable
 }
