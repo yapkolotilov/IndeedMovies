@@ -1,0 +1,4 @@
+include ':data'
+include ':logic'
+include ':app'
+rootProject.name = "Indeed Movies"

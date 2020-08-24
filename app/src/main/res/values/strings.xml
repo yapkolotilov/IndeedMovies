@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Indeed Movies</string>
+    <string name="icon">Icon</string>
+    <string name="indeed_movies">Indeed Movies</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="scan_registration_qr_code">Scan registration QR-code</string>
+    <string name="invalid_qr">Invalid QR!</string>
+    <string name="successfully_registered">Successfully registered!</string>
+    <string name="invalid_login_or_password">Invalid login or password!</string>
+    <string name="you_are_not_registered_yet">You are not registered yet!</string>
+    <string name="log_in_using_fingerprint">Log in using fingerprint</string>
+    <string name="log_in_with_password">Log in with password</string>
+    <string name="enter_movie_name">Enter movie name</string>
+    <string name="movie">Movie</string>
+    <string name="series">Series</string>
+    <string name="director">Director:</string>
+    <string name="actors">Actors:</string>
+    <string name="metascore">Metascore</string>
+    <string name="imdb_rating">%s / 10</string>
+    <string name="search">Search</string>
+    <string name="save">Save</string>
+    <string name="remove">Remove</string>
+</resources>

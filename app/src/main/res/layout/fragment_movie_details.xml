@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:background="@drawable/gradient_background_blue"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_default_medium">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/movie_title_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Logan" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        tools:text="Movie"
+        android:textSize="@dimen/movie_description_size"
+        android:textColor="@color/text_light_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginTop="@dimen/margin_default_small"
+        />
+
+    <View
+        android:id="@+id/v_genre_delimiter"
+        android:background="@color/text_light_grey"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_default_small"
+        app:layout_constraintLeft_toRightOf="@id/tv_type"
+        app:layout_constraintBottom_toBottomOf="@id/tv_type"
+        app:layout_constraintTop_toTopOf="@id/tv_type"
+        />
+
+    <TextView
+        android:id="@+id/tv_genre"
+        tools:text="Action, Drama, Sci-Fi, Thriller"
+        android:textSize="@dimen/movie_description_size"
+        android:textColor="@color/text_light_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/v_genre_delimiter"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_type"
+        android:layout_marginStart="@dimen/margin_default_small"
+        />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        tools:text="137 min"
+        android:textSize="@dimen/movie_description_size"
+        android:textColor="@color/text_light_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_type"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/iv_poster"
+        android:scaleType="centerCrop"
+        android:background="@color/text_grey"
+        android:contentDescription="@string/icon"
+        android:layout_width="100dp"
+        android:layout_height="160dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_type"
+        android:layout_marginTop="@dimen/margin_default_medium"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toRightOf="@id/iv_poster"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_poster"
+        android:layout_marginStart="@dimen/margin_default_small"
+        app:layout_constraintBottom_toBottomOf="@id/iv_poster"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_country"
+                tools:text="USA"
+                android:textSize="@dimen/movie_production_size"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <View
+                android:id="@+id/v_year_delimiter"
+                android:background="@color/white"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_default_small"
+                />
+
+            <TextView
+                android:id="@+id/tv_year"
+                tools:text="2017"
+                android:textSize="@dimen/movie_production_size"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default_small"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_director_hint"
+            android:text="@string/director"
+            android:textSize="@dimen/movie_team_size"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default_small"
+            />
+
+        <TextView
+            android:id="@+id/tv_director"
+            tools:text="James Mangold"
+            android:textSize="@dimen/movie_team_size"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tv_actors_hint"
+            android:text="@string/actors"
+            android:textSize="@dimen/movie_team_size"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default_small"
+            />
+
+        <TextView
+            android:id="@+id/tv_actors"
+            tools:text="Hugh Jackman, Patrick Stewart, Dafne Keen, Boyd Holbrook"
+            android:textSize="@dimen/movie_team_size"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_metascore_container"
+        android:background="@drawable/metacritic_background"
+        android:layout_width="@dimen/score_icon_size"
+        android:layout_height="@dimen/score_icon_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_poster"
+        android:layout_marginTop="@dimen/margin_default_medium"
+        />
+
+    <TextView
+        android:id="@+id/tv_metascore"
+        tools:text="77"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/v_metascore_container"
+        app:layout_constraintRight_toRightOf="@id/v_metascore_container"
+        app:layout_constraintTop_toTopOf="@id/v_metascore_container"
+        app:layout_constraintBottom_toBottomOf="@id/v_metascore_container"
+        />
+
+    <TextView
+        android:id="@+id/tv_metascore_hint"
+        android:text="@string/metascore"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/v_metascore_container"
+        app:layout_constraintTop_toTopOf="@id/v_metascore_container"
+        android:layout_marginStart="@dimen/margin_default_small"
+        />
+
+    <ImageView
+        android:id="@+id/iv_star"
+        android:src="@drawable/ic_star"
+        android:contentDescription="@string/icon"
+        android:layout_width="@dimen/score_icon_size"
+        android:layout_height="@dimen/score_icon_size"
+        app:layout_constraintLeft_toRightOf="@id/tv_metascore_hint"
+        app:layout_constraintTop_toBottomOf="@id/iv_poster"
+        android:layout_marginStart="@dimen/margin_default_medium"
+        android:layout_marginTop="@dimen/margin_default_medium"
+        />
+
+    <TextView
+        android:id="@+id/tv_imdb_rating"
+        tools:text="8.1 / 10"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/iv_star"
+        app:layout_constraintTop_toTopOf="@id/iv_star"
+        android:layout_marginStart="@dimen/margin_default_small"
+        />
+
+    <TextView
+        android:id="@+id/tv_imdb_votes"
+        tools:text="623,423"
+        android:textSize="14sp"
+        android:textColor="@color/text_light_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/iv_star"
+        app:layout_constraintTop_toBottomOf="@id/tv_imdb_rating"
+        android:layout_marginStart="@dimen/margin_default_small"
+        />
+
+    <TextView
+        android:id="@+id/tv_plot"
+        tools:text="In a future where mutants are nearly extinct, an elderly and weary Logan leads a quiet life. But when Laura, a mutant child pursued by scientists, comes to him for help, he must get her to safety."
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_imdb_votes"
+        android:layout_marginTop="@dimen/margin_default_small"
+        />
+
+    <Button
+        android:id="@+id/btn_save"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:text="@string/save"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:drawableStart="@drawable/ic_save"
+        android:background="@drawable/green_button_rounded_angles_background"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="@dimen/margin_default_medium"
+        />
+
+    <Button
+        android:id="@+id/btn_remove"
+        android:visibility="gone"
+        android:text="@string/remove"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:drawableStart="@drawable/ic_delete"
+        android:background="@drawable/red_button_rounded_angles_background"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="@dimen/margin_default_medium"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
