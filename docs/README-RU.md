@@ -3,21 +3,19 @@
 Indeed Movies - приложение-пример для демонстрации кода. С помощью него вы можете находить фильмы на IMDB и сохранять понравившиеся.
 
 ### Синопсис
-Проект был разработан в качестве тестового задания в одну из компаний, и позже был слегка доработан для публикации в качестве примера кода. Проект изначальным требованиям удовлетворяет.  [Задание (контактные данные удалены)](img/TaskText.png)
+Проект был разработан в качестве тестового задания в компанию, и позже был слегка доработан для публикации в качестве примера кода. Проект изначальным требованиям удовлетворяет.  [Задание (контактные данные удалены)](img/TaskText.png)
 
 ### Стек технологий
 **Язык** - Kotlin;
-**Технологии** - HTTP, SQLite, QR-сканнирование, сканирование отпечатка пальца, KeyStore, файловая система;
-**Библиотеки** - Navigation Component, Dagger2, Retrofit2, Room, RxJava2, Zxing, SecurePreferences/
-**API** - OMDBAPI
+**Технологии** - HTTP, SQLite, файловая система, QR-сканнирование, сканирование отпечатка пальца, KeyStore, Base64;
+**Библиотеки** - Navigation Component, Dagger2, Retrofit2, Room, RxJava2, Zxing, SecurePreferences;
+**API** - OMDB API
 
 ### Скриншоты
-![](img/Login.jpg =230x100)
-![](img/Fingerprint.jpg =230x100)
-![](img/QrScanning.jpg =230x100)
-![](img/Search.jpg =230x100)
-![](img/Details.jpg =230x100)
-![](img/Poster.jpg =230x100)
+
+|   <img src="img/Login.jpg" alt="alt text" width="200" height="400">   |   <img src="img/Fingerpint.jpg" alt="alt text" width="200" height="400">   |   <img src="img/QrScanning.jpg" alt="alt text" width="200" height="400">   |
+| ---- | ---- | ---- |
+|   <img src="img/Search.jpg" alt="alt text" width="200" height="400">   |   <img src="img/Details.jpg" alt="alt text" width="200" height="400">   |   <img src="img/Poster.jpg" alt="alt text" width="200" height="400">   |
 
 ### Процесс работы
 Для регистрации в приложении вам нужно отсканировать специальный QR-код. Например, такой: ![](img/QR.png)  
